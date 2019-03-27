@@ -1,5 +1,7 @@
 # api-logs
 
+[![npm version](https://badge.fury.io/js/api-logs.svg)](https://badge.fury.io/js/api-logs)
+
 This package helps you to log **HTTP requests** in **Express** Node.js application.
 
 
