@@ -21,7 +21,8 @@ Please note that this **env** key will have array of environments(allowed) as va
     var apiLogs = require('api-logs');
     
     app.use(apiLogs());
-	    app.get('/', function(req, res){
+	
+    app.get('/', function(req, res){
 		res.send('Hello from api-logs');
 	});
 	
@@ -38,7 +39,8 @@ If you want to restrict logging to perticular environments, you can pass it in t
     };
     
     app.use(apiLogs(apilogOptions));
-	    app.get('/', function(req, res){
+	
+    app.get('/', function(req, res){
 		res.send('Hello from api-logs');
 	});
 	
