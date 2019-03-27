@@ -10,10 +10,21 @@
     "type": "git",
     "url": "git+https://github.com/darpanpathak/api-log.git"
   },
-  "keywords": ["logger", "api-log","api", "logging","monitor", "api-audit","audit"],
+  "keywords": [
+    "logger",
+    "api-log",
+    "api",
+    "logging",
+    "monitor",
+    "api-audit",
+    "audit"
+  ],
   "author": "Darpan Pathak <pathakdarpan77@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/darpanpathak/api-log/issues"
+  },
+  "dependencies": {
+    "chalk": "2.4.2"
   }
 }

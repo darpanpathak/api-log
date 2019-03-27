@@ -1,27 +1,31 @@
+const chalk = require('chalk');
+const log = console.log;
+
 var myApiLogger = () => {
 
-    return (req, res, next) => {
+    return function (req, res, next) {
         req._startTime = new Date();
-       
+
         let oldW = res.write,
             oldE = res.end;
 
         let chunks = [];
 
-        res.write = (chunk) => {
+        res.write = function (chunk) {
             chunks.push(new Buffer(chunk));
             oldW.apply(res, arguments);
         };
 
-        res.end = (chunk) => {
+        res.end = function (chunk) {
             if (chunk)
                 chunks.push(new Buffer(chunk));
 
             var body = Buffer.concat(chunks).toString('utf8');
-            console.log(req.path, body);
-            console.log(`API call took ${new Date() - req._startTime} ms`, req.method, req.url, res.statusCode);
+            log(chalk.green(req.path, body));
+            log(chalk.blue(`API call took ${new Date() - req._startTime} ms`, req.method, req.url, res.statusCode));
 
             oldE.apply(res, arguments);
+
         };
 
         next();
