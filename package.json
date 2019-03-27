@@ -1,0 +1,19 @@
+{
+  "name": "api-log",
+  "version": "1.0.0",
+  "description": "Logger middleware for api request and response in express framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darpanpathak/api-log.git"
+  },
+  "keywords": ["logger", "api-log","api", "logging","monitor", "api-audit","audit"],
+  "author": "Darpan Pathak <pathakdarpan77@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darpanpathak/api-log/issues"
+  }
+}
