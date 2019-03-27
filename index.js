@@ -2,8 +2,7 @@ var myApiLogger = () => {
 
     return (req, res, next) => {
         req._startTime = new Date();
-        //let end = res.end;
-
+       
         let oldW = res.write,
             oldE = res.end;
 
@@ -26,17 +25,6 @@ var myApiLogger = () => {
         };
 
         next();
-
-        // res.end = function (chunk, encoding) {
-        //     var timeTaken = (new Date()) - req.startTime;
-
-        //     logger.info("%s %s %s %s", new Date().toLocaleString(), req.method, req.url, res.statusCode);
-
-        //     res.end = end;
-        //     res.end(chunk, encoding);
-        // };
-
-        // next();
     }
 }
 
