@@ -6,10 +6,9 @@ var customApiLogger = (options) => {
     let newOpt = _validateOptions(options);
 
     const opts = {
-        errorEventName: 'error',
         logDirectory: newOpt.logdir, // NOTE: folder must exist and be writable...
         fileNamePattern: 'api-logs-<DATE>.log',
-        dateFormat: 'YYYY.MM.DD'
+        dateFormat: 'YYYY.MM.DD-HH'
     };
     log = require('simple-node-logger').createRollingFileLogger(opts);
 
@@ -46,7 +45,7 @@ var customApiLogger = (options) => {
                 requestStartTime: req._startTime
             };
 
-            writeMsg(options, objToPrint, res.statusCode < 399 ? 'cyan' : 'red', _getLevel(msg, newOpt.maxExecTime));
+            writeMsg(options, objToPrint, res.statusCode < 399 ? 'cyan' : 'red', _getLevel(objToPrint, newOpt.maxExecTime));
 
             oldE.apply(res, arguments);
 
@@ -104,4 +103,4 @@ function _validateOptions(options) {
     return options;
 }
 
-module.exports = myApiLogger;
+module.exports = customApiLogger;
