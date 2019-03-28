@@ -25,6 +25,7 @@
     "url": "https://github.com/darpanpathak/api-logs/issues"
   },
   "dependencies": {
-    "chalk": "2.4.2"
+    "chalk": "2.4.2",
+    "simple-node-logger": "^18.12.22"
   }
 }
