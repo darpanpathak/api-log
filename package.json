@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "chalk": "2.4.2",
+    "find-remove": "^1.2.2",
     "simple-node-logger": "^18.12.22"
   }
 }

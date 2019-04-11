@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 var log;
+const findRemoveSync = require('find-remove');
 
 var customApiLogger = (options) => {
 
@@ -29,9 +30,11 @@ var customApiLogger = (options) => {
             if (chunk)
                 chunks.push(new Buffer(chunk));
 
-            var body = Buffer.concat(chunks).toString('utf8');
 
-            writeMsg(options, { "responseBody": body }, 'green');
+            if (newOpt.responseBody) {
+                var body = Buffer.concat(chunks).toString('utf8');
+                writeMsg(options, { "responseBody": body }, 'green');
+            }
 
             let objToPrint = {
                 executionTime: new Date() - req._startTime,
@@ -45,6 +48,7 @@ var customApiLogger = (options) => {
                 requestStartTime: req._startTime
             };
 
+            let result = findRemoveSync(newOpt.logdir, { age: { seconds:  newOpt.maxFiles }, extensions: '.log', limit: 10 });
             writeMsg(options, objToPrint, res.statusCode < 399 ? 'cyan' : 'red', _getLevel(objToPrint, newOpt.maxExecTime));
 
             oldE.apply(res, arguments);
@@ -99,6 +103,16 @@ function _validateOptions(options) {
         options.logdir = '.';
     if (!options.maxExecTime)
         options.maxExecTime = 60000;
+    if (!options.responseBody)
+        options.responseBody = false;
+    if (!options.maxFiles)
+        options.maxFiles = 86400 * 7;
+    else {
+        if (!isNaN(options.maxFiles))
+            options.maxFiles = parseInt(86400 * parseFloat(options.maxFiles));
+        else
+            options.maxFiles = 86400 * 7;
+    }
 
     return options;
 }

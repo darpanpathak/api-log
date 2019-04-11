@@ -19,6 +19,8 @@ Please note that this **env** key will have an array of environments as value. T
 | env | all | array of environments for which you want to print the console logs. example ['dev', 'uat'] etc |
 | logdir | . | path of the log directory, by default it will create file in the root dir. example logs, var/logs/api-logs etc |
 | maxExecTime | 60000 | maximum execution time for any service after which you want to log warnings. | 
+| responseBody | false | should be true if you want to enable logging of a response body | 
+| maxFiles | 7 | Number of days after which the file will be deleted |
 
 
 ### using api-logs without any options argument
