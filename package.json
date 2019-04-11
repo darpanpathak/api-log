@@ -1,6 +1,6 @@
 {
   "name": "api-logs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Logger middleware for api request and response in express framework",
   "main": "index.js",
   "scripts": {
